@@ -1,4 +1,3 @@
-// Import the Gemini API SDK
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Initialize the Gemini client with the correct API key from the environment variable
@@ -15,11 +14,13 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
 
     // Define the prompt for generating financial advice
     const userPrompt = `
-      Based on the following financial data:
-      - Total Budget: ${totalBudget} IDR
-      - Expenses: ${totalSpend} IDR
-      - Incomes: ${totalIncome} IDR
-      Provide concise financial advice with indonesia language in 1-2 sentences to help the user manage their finances.
+      Berdasarkan data finansial berikut:
+      - Total Anggaran: ${totalBudget} IDR
+      - Total Pengeluaran: ${totalSpend} IDR
+      - Total Pendapatan: ${totalIncome} IDR
+      
+      Berikan saran keuangan singkat (1-2 kalimat) dalam bahasa Indonesia untuk membantu pengguna mengatur anggarannya. 
+      Sertakan langkah-langkah praktis yang bisa dilakukan dalam waktu dekat untuk menghemat lebih banyak dan mencapai stabilitas keuangan.
     `;
 
     // Generate content from the prompt using the Gemini API
@@ -47,7 +48,7 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
     return advice;
   } catch (error) {
     console.error("Error fetching financial advice:", error);
-    return "Sorry, I couldn't fetch the financial advice at this moment. Please try again later.";
+    return "Maaf, saya tidak bisa memberikan nasehat keuangan saat ini. Silakan coba lagi nanti.";
   }
 };
 
