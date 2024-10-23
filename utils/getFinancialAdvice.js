@@ -19,7 +19,7 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
       - Total Budget: ${totalBudget} IDR
       - Expenses: ${totalSpend} IDR
       - Incomes: ${totalIncome} IDR
-      Provide concise financial advice in 1-2 sentences to help the user manage their finances.
+      Provide concise financial advice with indonesia language in 1-2 sentences to help the user manage their finances.
     `;
 
     // Generate content from the prompt using the Gemini API
