@@ -1,35 +1,48 @@
-// utils/getFinancialAdvice.js
-import OpenAI from "openai";
+// Import the Gemini API SDK
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Initialize the OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
+// Initialize the Gemini client with the correct API key from the environment variable
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
-// Function to fetch user-specific data (mocked for this example)
-
-// Function to generate personalized financial advice
+// Function to generate personalized financial advice using Gemini API
 const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
   console.log(totalBudget, totalIncome, totalSpend);
   try {
+    // Check if the API key is properly loaded
+    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
+      throw new Error("API key is missing");
+    }
+
+    // Define the prompt for generating financial advice
     const userPrompt = `
       Based on the following financial data:
-      - Total Budget: ${totalBudget} USD 
-      - Expenses: ${totalSpend} USD 
-      - Incomes: ${totalIncome} USD
-      Provide detailed financial advice in 2 sentence to help the user manage their finances more effectively.
+      - Total Budget: ${totalBudget} IDR
+      - Expenses: ${totalSpend} IDR
+      - Incomes: ${totalIncome} IDR
+      Provide concise financial advice in 1-2 sentences to help the user manage their finances.
     `;
 
-    // Send the prompt to the OpenAI API
-    const chatCompletion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [{ role: "user", content: userPrompt }],
+    // Generate content from the prompt using the Gemini API
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent({
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            {
+              text: userPrompt,
+            }
+          ],
+        }
+      ],
+      generationConfig: {
+        maxOutputTokens: 100, // Adjust token limit
+        temperature: 0.5, // Control randomness/creativity
+      },
     });
 
-    // Process and return the response
-    const advice = chatCompletion.choices[0].message.content;
-
+    // Extract the first generated response, ensuring only one advice is returned
+    const advice = result.response.text().trim(); // Extracting a single output
     console.log(advice);
     return advice;
   } catch (error) {
