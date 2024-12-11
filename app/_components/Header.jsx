@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useUser, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/react"
 
 function Header() {
   const { user, isSignedIn } = useUser();
