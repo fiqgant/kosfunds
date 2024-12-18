@@ -33,7 +33,7 @@ function DashboardLayout({ children }) {
       {/* Include Analytics at the top level of the layout */}
       <Analytics />
       <div>
-        <div className="fixed md:w-64 hidden md:block">
+        <div className="fixed md:w-64">
           <SideNav />
         </div>
         <div className="md:ml-64">
