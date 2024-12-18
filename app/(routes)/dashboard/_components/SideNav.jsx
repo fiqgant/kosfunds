@@ -6,100 +6,75 @@ import {
   ReceiptText,
   ShieldCheck,
   CircleDollarSign,
-  TrendingUp,
-  TrendingDownIcon,
 } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-function SideNav() {
+
+function Navigation() {
   const menuList = [
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: LayoutGrid,
-      path: "/dashboard",
-    },
-    {
-      id: 2,
-      name: "Incomes",
-      icon: CircleDollarSign,
-      path: "/dashboard/incomes",
-    },
-    {
-      id: 2,
-      name: "Budgets",
-      icon: PiggyBank,
-      path: "/dashboard/budgets",
-    },
-    {
-      id: 3,
-      name: "Expenses",
-      icon: ReceiptText,
-      path: "/dashboard/expenses",
-    },
-    // {
-    //   id: 2,
-    //   name: "Investments",
-    //   icon: TrendingUp,
-    //   path: "/dashboard/investments",
-    // },
-    // {
-    //   id: 2,
-    //   name: "Debts",
-    //   icon: TrendingDownIcon,
-    //   path: "/dashboard/debts",
-    // },
-    {
-      id: 4,
-      name: "Upgrade",
-      icon: ShieldCheck,
-      path: "/dashboard/upgrade",
-    },
+    { id: 1, name: "Dasbor", icon: LayoutGrid, path: "/dashboard" },
+    { id: 2, name: "Pendapatan", icon: CircleDollarSign, path: "/dashboard/incomes" },
+    { id: 3, name: "Anggaran", icon: PiggyBank, path: "/dashboard/budgets" },
+    { id: 4, name: "Pengeluaran", icon: ReceiptText, path: "/dashboard/expenses" },
+    { id: 5, name: "Perbarui", icon: ShieldCheck, path: "/dashboard/upgrade" },
   ];
+
   const path = usePathname();
 
   useEffect(() => {
     console.log(path);
   }, [path]);
+
   return (
-    <div className="h-screen p-5 border shadow-sm">
-      {/* <Image src={'/logo.svg'}
-        alt='logo'
-        width={160}
-        height={100}
-        /> */}
-      <div className="flex flex-row items-center">
-        <Image src={"./chart-donut.svg"} alt="logo" width={40} height={25} />
-        <span className="text-blue-800 font-bold text-xl">Kosfunds</span>
-      </div>
-      <div className="mt-5">
-        {menuList.map((menu, index) => (
-          <Link href={menu.path} key={index}>
-            <h2
-              className={`flex gap-2 items-center
-                    text-gray-500 font-medium
-                    mb-2
-                    p-4 cursor-pointer rounded-full
-                    hover:text-primary hover:bg-blue-100
-                    ${path == menu.path && "text-primary bg-blue-100"}
-                    `}
+    <div>
+      {/* Sidebar untuk Desktop */}
+      <div className="hidden lg:flex lg:flex-col lg:w-64 lg:h-screen p-5 border shadow-sm fixed">
+        <div className="flex flex-row items-center mb-5">
+          <Image src={"/chart-donut.svg"} alt="logo" width={40} height={25} />
+          <span className="text-blue-800 font-bold text-xl ml-2">Kosfunds</span>
+        </div>
+        {menuList.map((menu) => (
+          <Link href={menu.path} key={menu.id}>
+            <div
+              className={`flex items-center gap-2 p-4 mb-2 rounded-full text-gray-500 hover:bg-blue-100 hover:text-primary cursor-pointer ${
+                path === menu.path && "text-primary bg-blue-100"
+              }`}
             >
               <menu.icon />
-              {menu.name}
-            </h2>
+              <span>{menu.name}</span>
+            </div>
           </Link>
         ))}
+        <div className="absolute bottom-10 left-5 flex items-center gap-2">
+          <UserButton />
+          <span className="text-gray-700">Profil</span>
+        </div>
       </div>
-      <div
-        className="fixed bottom-10 p-5 flex gap-2
-            items-center"
-      >
-        <UserButton />
-        Profile
+
+      {/* Navbar Bawah untuk Mobile */}
+      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t shadow-md flex justify-around p-2 z-50 space-x-0">
+        {menuList.map((menu) => (
+          <Link href={menu.path} key={menu.id}>
+            <div className="flex flex-col items-center text-gray-500">
+              <menu.icon
+                className={`w-6 h-6 ${
+                  path === menu.path ? "text-blue-700" : "text-gray-500"
+                }`}
+              />
+              <span
+                className={`text-xs ${
+                  path === menu.path ? "text-blue-700" : "text-gray-500"
+                }`}
+              >
+                {menu.name}
+              </span>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
 }
 
-export default SideNav;
+export default Navigation;
