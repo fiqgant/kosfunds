@@ -22,30 +22,45 @@ function CreateIncomes({ refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState("😀");
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
 
-  const [name, setName] = useState();
-  const [amount, setAmount] = useState();
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { user } = useUser();
 
-  /**
-   * Used to Create New Budget
-   */
   const onCreateIncomes = async () => {
-    const result = await db
-      .insert(Incomes)
-      .values({
-        name: name,
-        amount: amount,
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-        icon: emojiIcon,
-      })
-      .returning({ insertedId: Incomes.id });
+    const parsedAmount = parseFloat(amount.replace(/,/g, ""));
+    if (!name || isNaN(parsedAmount) || parsedAmount <= 0) {
+      toast.error("Please provide a valid name and positive amount!");
+      return;
+    }
 
-    if (result) {
-      refreshData();
-      toast("New Income Source Created!");
+    try {
+      setLoading(true);
+      const result = await db
+        .insert(Incomes)
+        .values({
+          name,
+          amount: parsedAmount,
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+          icon: emojiIcon,
+        })
+        .returning({ insertedId: Incomes.id });
+
+      if (result) {
+        refreshData();
+        toast.success("New Income Source Created!");
+        setName(""); // Reset input
+        setAmount("");
+      }
+    } catch (error) {
+      toast.error("Failed to create income source. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <div>
       <Dialog>
@@ -71,27 +86,30 @@ function CreateIncomes({ refreshData }) {
                 >
                   {emojiIcon}
                 </Button>
-                <div className="absolute z-20">
-                  <EmojiPicker
-                    open={openEmojiPicker}
-                    onEmojiClick={(e) => {
-                      setEmojiIcon(e.emoji);
-                      setOpenEmojiPicker(false);
-                    }}
-                  />
-                </div>
+                {openEmojiPicker && (
+                  <div className="absolute z-20">
+                    <EmojiPicker
+                      onEmojiClick={(e) => {
+                        setEmojiIcon(e.emoji);
+                        setOpenEmojiPicker(false);
+                      }}
+                    />
+                  </div>
+                )}
                 <div className="mt-2">
                   <h2 className="text-black font-medium my-1">Source Name</h2>
                   <Input
                     placeholder="e.g. Youtube"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Montly Amount</h2>
+                  <h2 className="text-black font-medium my-1">Monthly Amount</h2>
                   <Input
-                    type="number"
-                    placeholder="e.g. 5000 IDR"
+                    type="text"
+                    placeholder="e.g. 5000"
+                    value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                   />
                 </div>
@@ -101,11 +119,11 @@ function CreateIncomes({ refreshData }) {
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
               <Button
-                disabled={!(name && amount)}
-                onClick={() => onCreateIncomes()}
+                disabled={loading || !name || !amount}
+                onClick={onCreateIncomes}
                 className="mt-5 w-full rounded-full"
               >
-                Create Income Source
+                {loading ? "Creating..." : "Create Income Source"}
               </Button>
             </DialogClose>
           </DialogFooter>
