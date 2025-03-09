@@ -10,7 +10,7 @@ import BudgetItem from "./budgets/_components/BudgetItem";
 import ExpenseListTable from "./expenses/_components/ExpenseListTable";
 import PopAd from './popAd/popAd';  // Impor komponen AdPopup
 import Ntvbn from './nativeBannerAd/nativeBannerAd';  // Impor komponen AdPopup
-import Banner728 from "./bannerAd/banner728";
+import Banner468 from "./bannerAd/banner468";
 import dynamic from "next/dynamic";
 
 const GoogleAd = dynamic(() => import
@@ -93,8 +93,6 @@ function Dashboard() {
     <div className="p-8 bg-">
       <div className="container">
       <PopAd />
-      <Banner728 />
-      <GoogleAd />
     </div>
     <div className="flex justify-center mt-6">
       <Ntvbn />
