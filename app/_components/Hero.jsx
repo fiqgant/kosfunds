@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, BarChart3, PieChart, TrendingUp } from "lucide-react"
+import { ArrowRight, BarChart3, PieChart, TrendingUp, DollarSign, LineChart, Wallet } from 'lucide-react'
 import { ContainerScroll } from "../../components/ui/container-scroll-animation"
 
 function Hero() {
@@ -73,32 +73,81 @@ function Hero() {
           }
         />
 
-        {/* Floating finance icons */}
-        <div className="relative mt-20 w-full max-w-5xl">
-          <div className="absolute -left-10 top-0 animate-float-slow">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white p-4 shadow-xl dark:bg-gray-800">
-              <BarChart3 className="h-10 w-10 text-blue-600 dark:text-blue-400" />
-            </div>
-          </div>
-          <div className="absolute -right-10 top-20 animate-float">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white p-4 shadow-xl dark:bg-gray-800">
-              <PieChart className="h-10 w-10 text-blue-600 dark:text-blue-400" />
-            </div>
-          </div>
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float-slow">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white p-4 shadow-xl dark:bg-gray-800">
-              <TrendingUp className="h-10 w-10 text-blue-600 dark:text-blue-400" />
-            </div>
-          </div>
-
-          {/* Glowing orb in the center */}
-          <div className="mx-auto flex h-60 w-60 items-center justify-center">
-            <div className="relative h-40 w-40 rounded-full bg-gradient-to-r from-blue-600 to-blue-800 opacity-90 blur-[40px]"></div>
-            <div className="absolute flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-blue-800 shadow-lg">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white">Kosfunds</div>
-                <div className="mt-1 text-sm font-medium text-blue-100">AI Finance</div>
+        {/* Financial visualization - replacing tablet with abstract visualization */}
+        <div className="mt-20 w-full max-w-5xl">
+          <div className="relative mx-auto h-[400px] w-full max-w-4xl overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-blue-800 p-8 shadow-2xl">
+            {/* Abstract financial visualization elements */}
+            <div className="absolute left-10 top-10 h-20 w-20 rounded-full bg-white/20 backdrop-blur-md"></div>
+            <div className="absolute right-20 top-20 h-16 w-16 rounded-full bg-white/20 backdrop-blur-md"></div>
+            <div className="absolute bottom-20 left-20 h-24 w-24 rounded-full bg-white/20 backdrop-blur-md"></div>
+            
+            {/* Animated financial icons */}
+            <div className="absolute left-[15%] top-[20%] animate-float-slow">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md">
+                <DollarSign className="h-8 w-8 text-blue-600" />
               </div>
+            </div>
+            <div className="absolute right-[20%] top-[30%] animate-float">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md">
+                <LineChart className="h-8 w-8 text-blue-600" />
+              </div>
+            </div>
+            <div className="absolute bottom-[25%] left-[40%] animate-float-slow">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md">
+                <Wallet className="h-8 w-8 text-blue-600" />
+              </div>
+            </div>
+            
+            {/* Animated lines connecting elements */}
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+              <path 
+                d="M200,100 C300,50 400,150 500,100" 
+                stroke="rgba(255,255,255,0.3)" 
+                strokeWidth="2" 
+                fill="none"
+                className="animate-dash"
+              />
+              <path 
+                d="M150,200 C250,250 350,150 450,200 C550,250 650,200 750,150" 
+                stroke="rgba(255,255,255,0.3)" 
+                strokeWidth="2" 
+                fill="none"
+                className="animate-dash-reverse"
+              />
+              <path 
+                d="M100,300 C200,250 300,350 400,300 C500,250 600,300 700,250" 
+                stroke="rgba(255,255,255,0.3)" 
+                strokeWidth="2" 
+                fill="none"
+                className="animate-dash-slow"
+              />
+            </svg>
+            
+            {/* Central element */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+              <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-white shadow-2xl">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 opacity-20 blur-md"></div>
+                <div className="z-10 text-center">
+                  <div className="text-2xl font-bold text-blue-600">Kosfunds</div>
+                  <div className="text-xs font-medium text-blue-500">AI Finance</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Particles */}
+            <div className="absolute inset-0 overflow-hidden">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <div 
+                  key={i}
+                  className="absolute h-2 w-2 rounded-full bg-white opacity-70"
+                  style={{
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                    animation: `float-particle ${5 + Math.random() * 10}s linear infinite`,
+                    animationDelay: `${Math.random() * 5}s`
+                  }}
+                ></div>
+              ))}
             </div>
           </div>
         </div>
@@ -131,11 +180,34 @@ function Hero() {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
         }
+        @keyframes float-particle {
+          0% { transform: translate(0, 0); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translate(20px, -50px); opacity: 0; }
+        }
+        @keyframes dash {
+          to {
+            stroke-dashoffset: 1000;
+          }
+        }
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
         .animate-float-slow {
           animation: float-slow 8s ease-in-out infinite;
+        }
+        .animate-dash {
+          stroke-dasharray: 10;
+          animation: dash 20s linear infinite;
+        }
+        .animate-dash-reverse {
+          stroke-dasharray: 10;
+          animation: dash 25s linear infinite reverse;
+        }
+        .animate-dash-slow {
+          stroke-dasharray: 15;
+          animation: dash 30s linear infinite;
         }
       `}</style>
     </section>
