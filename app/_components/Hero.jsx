@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import "../Hero.css";
+import Link from "next/link";
 
 function Hero() {
   // State for testimonials
@@ -112,10 +113,12 @@ function Hero() {
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button className="group h-14 min-w-[200px] rounded-full bg-gradient-to-r from-kosfunds-blue to-kosfunds-darkblue px-8 text-lg font-medium text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-300/30 dark:from-kosfunds-blue dark:to-kosfunds-darkblue dark:hover:shadow-blue-600/20">
-                Start for Free
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+            <Link href={"/sign-in"}>
+                <Button className="group h-14 min-w-[200px] rounded-full bg-gradient-to-r from-kosfunds-blue to-kosfunds-darkblue px-8 text-lg font-medium text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-300/30 dark:from-kosfunds-blue dark:to-kosfunds-darkblue dark:hover:shadow-blue-600/20">
+                  Start for Free
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link> 
               <Button
                 variant="outline"
                 className="h-14 min-w-[200px] rounded-full bg-white/80 backdrop-blur-sm border-blue-200 px-8 text-lg font-medium text-blue-600 transition-all duration-300 hover:border-blue-300 hover:bg-blue-50/50 dark:border-blue-800 dark:bg-gray-900/30 dark:text-blue-400 dark:hover:bg-blue-950/20"
@@ -532,10 +535,12 @@ function Hero() {
                   Join thousands of users who have already improved their financial well-being with Kosfunds AI.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-semibold text-blue-600 transition-all duration-300 hover:bg-blue-50">
-                    Start for Free
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                  <Link href={"/sign-in"}>
+                    <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-semibold text-blue-600 transition-all duration-300 hover:bg-blue-50">
+                      Start for Free
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
                   <Button
                     variant="outline"
                     className="h-14 min-w-[200px] rounded-full border-white/30 bg-white/10 px-8 text-lg font-medium text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
