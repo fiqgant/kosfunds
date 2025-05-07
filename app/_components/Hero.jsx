@@ -540,21 +540,16 @@ function Hero() {
       {/* CALL TO ACTION SECTION */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl">
-            {/* Background Gradient + Blur Layer */}
+          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl text-white">
+            
+            {/* Proper background with transparency and blur */}
             <div className="absolute inset-0 z-0">
-              <div className="h-full w-full bg-gradient-to-r from-kosfunds-blue via-kosfunds-purple to-kosfunds-pink" />
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
+              <div className="h-full w-full bg-gradient-to-r from-[#4845d2cc] via-[#9333eacc] to-[#ec4899cc]" /> {/* cc = ~80% opacity */}
+              <div className="absolute inset-0 backdrop-blur-md" />
             </div>
       
-            {/* Animated Patterns */}
-            <div className="absolute inset-0 z-0 opacity-20">
-              <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_40%_60%,rgba(255,255,255,0.3)_0%,transparent_40%)]" />
-              <div className="absolute top-0 right-0 h-full w-full bg-[radial-gradient(circle_at_60%_30%,rgba(255,255,255,0.3)_0%,transparent_30%)]" />
-            </div>
-      
-            {/* Content */}
-            <div className="relative z-10 grid grid-cols-1 gap-8 px-6 py-16 md:grid-cols-2 md:px-12 md:py-24 text-white">
+            {/* CTA content */}
+            <div className="relative z-10 grid grid-cols-1 gap-8 px-6 py-16 md:grid-cols-2 md:px-12 md:py-24">
               <div>
                 <h2 className="mb-4 text-4xl font-bold md:text-5xl">
                   Ready to Transform Your Finances?
@@ -562,7 +557,6 @@ function Hero() {
                 <p className="mb-8 max-w-lg text-lg text-white/90">
                   Join thousands of users who have already improved their financial well-being with Kosfunds AI
                 </p>
-      
                 <div className="flex flex-col sm:flex-row items-center gap-4">
                   <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-medium text-blue-600 transition-all duration-300 hover:bg-blue-50">
                     Start for Free
@@ -584,7 +578,6 @@ function Hero() {
                 <p className="mb-8 max-w-lg text-lg text-white/90">
                   Discover high-quality freelance opportunities matched to your skills and manage your earnings all in one place
                 </p>
-      
                 <div className="flex flex-col sm:flex-row items-center gap-4">
                   <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-medium text-purple-600 transition-all duration-300 hover:bg-purple-50">
                     Browse Jobs
@@ -600,13 +593,14 @@ function Hero() {
               </div>
             </div>
       
-            {/* Decorative Elements */}
+            {/* Decorative bubbles */}
             <div className="absolute top-10 left-10 h-20 w-20 rounded-full border border-white/20 bg-white/10" />
             <div className="absolute bottom-10 right-10 h-24 w-24 rounded-full border border-white/20 bg-white/10" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-40 w-40 rounded-full border border-white/10 bg-white/5" />
           </div>
         </div>
       </section>
+
 
 
       {/* Add missing imports and CSS */}
