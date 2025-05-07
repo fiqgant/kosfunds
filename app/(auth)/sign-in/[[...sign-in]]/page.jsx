@@ -7,7 +7,7 @@ export default function Page() {
         <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
           <img
             alt=""
-            src="https://raw.githubusercontent.com/fiqgant/kosfunds/refs/heads/main/public/back.png"
+            src="https://raw.githubusercontent.com/fiqgant/kosfunds/main/public/back.png"
             className="absolute inset-0 h-full w-full object-cover opacity-80"
           />
         </section>
