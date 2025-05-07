@@ -22,6 +22,7 @@ import {
   PiggyBank,
 } from "lucide-react";
 import { useState } from "react";
+import "../Hero.css";
 
 function Hero() {
   // State for testimonials
