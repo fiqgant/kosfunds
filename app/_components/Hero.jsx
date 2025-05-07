@@ -542,50 +542,54 @@ function Hero() {
         <div className="container mx-auto px-4">
           <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl text-white">
             
-            {/* Proper background with transparency and blur */}
+            {/* Background */}
             <div className="absolute inset-0 z-0">
-              <div className="h-full w-full bg-gradient-to-r from-[#4845d2cc] via-[#9333eacc] to-[#ec4899cc]" /> {/* cc = ~80% opacity */}
+              <div className="h-full w-full bg-gradient-to-r from-[#4845d2cc] via-[#9333eacc] to-[#ec4899cc]" />
               <div className="absolute inset-0 backdrop-blur-md" />
             </div>
       
-            {/* CTA content */}
+            {/* Content */}
             <div className="relative z-10 grid grid-cols-1 gap-8 px-6 py-16 md:grid-cols-2 md:px-12 md:py-24">
+              {/* Left Column */}
               <div>
-                <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-                  Ready to Transform Your Finances?
+                <h2 className="mb-4 text-4xl font-extrabold md:text-5xl leading-tight">
+                  Ready to Transform <br className="hidden sm:block" />
+                  Your Finances?
                 </h2>
                 <p className="mb-8 max-w-lg text-lg text-white/90">
-                  Join thousands of users who have already improved their financial well-being with Kosfunds AI
+                  Join thousands of users who have already improved their financial well-being with Kosfunds AI.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-medium text-blue-600 transition-all duration-300 hover:bg-blue-50">
+                  <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-semibold text-blue-600 transition-all duration-300 hover:bg-blue-50">
                     Start for Free
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                   <Button
                     variant="outline"
-                    className="h-14 min-w-[200px] rounded-full border-white/40 px-8 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+                    className="h-14 min-w-[200px] rounded-full border-white/30 bg-white/10 px-8 text-lg font-medium text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                   >
                     Financial Demo
                   </Button>
                 </div>
               </div>
       
+              {/* Right Column */}
               <div>
-                <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-                  Find Freelance Work That Pays Well
+                <h2 className="mb-4 text-4xl font-extrabold md:text-5xl leading-tight">
+                  Find Freelance Work <br className="hidden sm:block" />
+                  That Pays Well
                 </h2>
                 <p className="mb-8 max-w-lg text-lg text-white/90">
-                  Discover high-quality freelance opportunities matched to your skills and manage your earnings all in one place
+                  Discover high-quality freelance opportunities matched to your skills and manage your earnings all in one place.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-medium text-purple-600 transition-all duration-300 hover:bg-purple-50">
+                  <Button className="group h-14 min-w-[200px] rounded-full bg-white px-8 text-lg font-semibold text-purple-600 transition-all duration-300 hover:bg-purple-50">
                     Browse Jobs
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                   <Button
                     variant="outline"
-                    className="h-14 min-w-[200px] rounded-full border-white/40 px-8 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+                    className="h-14 min-w-[200px] rounded-full border-white/30 bg-white/10 px-8 text-lg font-medium text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                   >
                     Freelance Guide
                   </Button>
@@ -600,6 +604,7 @@ function Hero() {
           </div>
         </div>
       </section>
+
 
 
 
