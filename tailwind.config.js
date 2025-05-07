@@ -66,10 +66,38 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        "rotate-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "float-particle": {
+          "0%": { transform: "translate(0, 0)", opacity: "0" },
+          "10%": { opacity: "1" },
+          "90%": { opacity: "1" },
+          "100%": { transform: "translate(20px, -50px)", opacity: "0" },
+        },
+        dash: {
+          to: { strokeDashoffset: "1000" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 6s ease-in-out infinite",
+        "float-slow": "float-slow 9s ease-in-out infinite",
+        "rotate-slow": "rotate-slow 20s linear infinite",
+        "float-particle": "float-particle 10s linear infinite",
+        dash: "dash 20s linear infinite",
+        "dash-reverse": "dash 25s linear infinite reverse",
+        "dash-slow": "dash 30s linear infinite",
       },
     },
   },
