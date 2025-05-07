@@ -7,7 +7,7 @@ export default function Page() {
         <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
           <img
             alt=""
-            src="https://img.freepik.com/free-vector/digital-money-transfer-technology-background_1017-17454.jpg?t=st=1741427143~exp=1741430743~hmac=874fc92bf51220ca7ac90e82c8ff23aa84dc167cae487369c7641491fedbecd7&w=1060"
+            src="https://raw.githubusercontent.com/fiqgant/kosfunds/refs/heads/main/public/back.png"
             className="absolute inset-0 h-full w-full object-cover opacity-80"
           />
         </section>
