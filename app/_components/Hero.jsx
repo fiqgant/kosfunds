@@ -40,10 +40,12 @@ function Hero() {
           </p>
         
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button className="group h-12 min-w-[180px] rounded-full bg-blue-600 px-8 text-lg font-medium text-white hover:bg-blue-700">
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <Link href="/sign-in">
+              <Button className="group h-12 min-w-[180px] rounded-full bg-blue-600 px-8 text-lg font-medium text-white hover:bg-blue-700">
+                Sign In
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
             <Button
               variant="outline"
               className="h-12 min-w-[180px] rounded-full border-blue-600 px-8 text-lg font-medium text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950/50"
