@@ -127,81 +127,75 @@ function Hero() {
 
           {/* Advanced financial dashboard visualization with freelance section */}
           <div className="mt-20 w-full max-w-6xl overflow-hidden px-4">
-            <div className="relative mx-auto h-[520px] md:h-[500px] w-full max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#d7e8ff] via-[#e8d9ff] to-[#fde5f5] p-4 md:p-8 shadow-2xl">
+            <div className="relative mx-auto h-[520px] md:h-[500px] w-full max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#2a4bff] via-[#1b3dbf] to-[#1f285f] p-4 md:p-8 shadow-2xl">
           
-              {/* Dot Grid Background */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:18px_18px] opacity-20 z-0" />
+              {/* Dot Grid */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.3)_1px,transparent_1px)] [background-size:18px_18px] opacity-10 z-0" />
           
-              {/* Panel 1 */}
-              <div className="absolute left-4 md:left-10 top-4 md:top-10 w-44 h-28 md:w-52 md:h-36 rounded-xl bg-white/40 backdrop-blur-md border border-white/40 shadow p-3 md:p-4 z-10">
+              {/* Panel */}
+              <div className="absolute left-4 md:left-10 top-4 md:top-10 w-44 h-28 md:w-52 md:h-36 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow p-3 md:p-4 z-10">
                 <h4 className="text-white font-semibold text-sm md:text-base mb-2">Finance Track</h4>
-                <div className="h-2 w-3/4 bg-white/60 rounded mb-1" />
-                <div className="h-2 w-1/2 bg-white/60 rounded mb-1" />
-                <div className="h-2 w-2/3 bg-white/60 rounded" />
+                <div className="h-2 w-3/4 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-1/2 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-2/3 bg-white/30 rounded" />
               </div>
           
-              {/* Panel 2 */}
-              <div className="absolute right-4 md:right-12 top-8 md:top-16 w-40 h-24 md:w-48 md:h-28 rounded-xl bg-white/30 backdrop-blur-md border border-white/30 shadow p-3 z-10">
+              <div className="absolute right-4 md:right-12 top-8 md:top-16 w-40 h-24 md:w-48 md:h-28 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow p-3 z-10">
                 <h4 className="text-white font-semibold text-sm md:text-base mb-2">Freelance Jobs</h4>
-                <div className="h-2 w-2/3 bg-white/50 rounded mb-1" />
-                <div className="h-2 w-1/2 bg-white/50 rounded" />
+                <div className="h-2 w-2/3 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-1/2 bg-white/30 rounded" />
               </div>
           
-              {/* Panel 3 */}
-              <div className="absolute bottom-16 left-4 md:left-16 w-48 h-28 md:w-56 md:h-32 rounded-xl bg-white/30 backdrop-blur-md border border-white/30 shadow p-3 md:p-4 z-10">
+              <div className="absolute bottom-16 left-4 md:left-16 w-48 h-28 md:w-56 md:h-32 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow p-3 md:p-4 z-10">
                 <h4 className="text-white font-semibold text-sm md:text-base mb-2">Income Dashboard</h4>
-                <div className="h-2 w-4/5 bg-white/50 rounded mb-1" />
-                <div className="h-2 w-2/3 bg-white/50 rounded mb-1" />
-                <div className="h-2 w-3/4 bg-white/50 rounded" />
+                <div className="h-2 w-4/5 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-2/3 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-3/4 bg-white/30 rounded" />
               </div>
           
-              {/* Panel 4 */}
-              <div className="absolute bottom-20 right-4 md:right-20 w-52 h-32 md:w-56 md:h-40 rounded-xl bg-white/30 backdrop-blur-md border border-white/30 shadow p-3 md:p-4 z-10">
+              <div className="absolute bottom-20 right-4 md:right-20 w-52 h-32 md:w-56 md:h-40 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow p-3 md:p-4 z-10">
                 <h4 className="text-white font-semibold text-sm md:text-base mb-2">Freelance Opportunities</h4>
-                <div className="h-2 w-4/5 bg-white/50 rounded mb-1" />
-                <div className="h-2 w-3/4 bg-white/50 rounded mb-1" />
-                <div className="h-2 w-2/3 bg-white/50 rounded" />
+                <div className="h-2 w-4/5 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-3/4 bg-white/30 rounded mb-1" />
+                <div className="h-2 w-2/3 bg-white/30 rounded" />
               </div>
           
               {/* Icons */}
               <div className="absolute left-[12%] top-[20%] animate-float z-20">
                 <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl bg-white shadow backdrop-blur-md border border-white/50">
-                  <DollarSign className="h-7 w-7 md:h-10 md:w-10 text-blue-500" />
+                  <DollarSign className="h-7 w-7 md:h-10 md:w-10 text-[#2a4bff]" />
                 </div>
               </div>
-          
               <div className="absolute right-[18%] top-[30%] animate-float-slow z-20">
                 <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl bg-white shadow backdrop-blur-md border border-white/50">
-                  <LineChart className="h-7 w-7 md:h-10 md:w-10 text-indigo-500" />
+                  <LineChart className="h-7 w-7 md:h-10 md:w-10 text-[#1b3dbf]" />
                 </div>
               </div>
-          
               <div className="absolute bottom-[25%] left-[40%] animate-float z-20">
                 <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl bg-white shadow backdrop-blur-md border border-white/50">
-                  <Wallet className="h-7 w-7 md:h-10 md:w-10 text-purple-500" />
+                  <Wallet className="h-7 w-7 md:h-10 md:w-10 text-[#8056e3]" />
                 </div>
               </div>
-          
               <div className="absolute right-[30%] bottom-[12%] animate-float-slow z-20">
                 <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl bg-white shadow backdrop-blur-md border border-white/50">
-                  <Briefcase className="h-7 w-7 md:h-10 md:w-10 text-pink-500" />
+                  <Briefcase className="h-7 w-7 md:h-10 md:w-10 text-[#24c0c0]" />
                 </div>
               </div>
           
-              {/* Central Kosfunds */}
+              {/* Kosfunds Logo */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform z-30 scale-90 sm:scale-100">
                 <div className="relative flex h-28 w-28 md:h-40 md:w-40 items-center justify-center rounded-full bg-white shadow-[0_0_40px_rgba(37,99,235,0.3)]">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 via-teal-300 to-purple-400 opacity-20 blur-xl animate-rotate-slow" />
                   <div className="absolute inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-20" />
                   <div className="absolute inset-2 rounded-full bg-white" />
                   <div className="z-10 text-center">
-                    <div className="mb-1 text-xl md:text-3xl font-bold text-blue-600">Kosfunds</div>
-                    <div className="text-xs md:text-sm font-semibold text-gray-700">AI Finance & Work</div>
+                    <div className="mb-1 text-xl md:text-3xl font-bold text-[#2a4bff]">Kosfunds</div>
+                    <div className="text-xs md:text-sm font-semibold text-[#24b8b8]">AI Finance & Work</div>
                   </div>
                 </div>
               </div>
           
-              {/* Animated Particles */}
+              {/* Particles */}
               <div className="absolute inset-0 overflow-hidden z-0">
                 {Array.from({ length: 25 }).map((_, i) => (
                   <div
