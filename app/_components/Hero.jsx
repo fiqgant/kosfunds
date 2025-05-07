@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, BarChart3, PieChart, TrendingUp, DollarSign, LineChart, Wallet } from 'lucide-react'
 import { ContainerScroll } from "../../components/ui/container-scroll-animation"
