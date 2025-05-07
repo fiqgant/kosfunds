@@ -94,9 +94,6 @@ function Dashboard() {
       <div className="container">
       <PopAd />
     </div>
-    <div className="flex justify-center mt-6">
-      <Ntvbn />
-    </div>
 
       <h2 className="font-bold text-4xl">Hi, {user?.fullName} 👋</h2>
       <p className="text-gray-500">
@@ -126,9 +123,6 @@ function Dashboard() {
               ))}
         </div>
       </div>
-      <div className="flex justify-center mt-6">
-      <Ntvbn />
-    </div>
     </div>
   );
 }
