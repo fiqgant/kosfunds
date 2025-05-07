@@ -14,64 +14,44 @@ function Hero() {
         <div className="absolute -right-40 bottom-20 h-[30rem] w-[30rem] rounded-full bg-blue-500/20 blur-[120px]"></div>
       </div>
 
-      {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-50">
-        <div className="container mx-auto flex items-center justify-between p-4">
-          <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="white" />
-                <path d="M12 6L16 8.5V13.5L12 16L8 13.5V8.5L12 6Z" fill="#3B82F6" />
-              </svg>
-            </div>
-            <span className="text-xl font-bold text-blue-600 dark:text-blue-400">Kosfunds</span>
-          </div>
-          <Button className="rounded-full bg-blue-600 hover:bg-blue-700">Get Started</Button>
-        </div>
-      </header>
-
       {/* Hero content */}
       <div className="container relative z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center">
-        <ContainerScroll
-          titleComponent={
-            <div className="mx-auto max-w-4xl">
-              <div className="mb-6 inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-2 dark:border-blue-800 dark:bg-blue-900/30">
-                <span className="mr-2 rounded-full bg-blue-600 px-2 py-1 text-xs font-semibold text-white">NEW</span>
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                  AI-Powered Finance Management
-                </span>
-              </div>
-
-              <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                Manage your Money with{" "}
-                <span className="relative">
-                  <span className="relative z-10 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-600">
-                    AI-Driven Personal Finance
-                  </span>
-                  <span className="absolute bottom-2 left-0 z-0 h-3 w-full bg-blue-200 opacity-30 dark:bg-blue-700 dark:opacity-40"></span>
-                </span>
-              </h1>
-
-              <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-                Take control of your financial future with intelligent insights, automated budgeting, and personalized
-                recommendations.
-              </p>
-
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button className="group h-12 min-w-[180px] rounded-full bg-blue-600 px-8 text-lg font-medium text-white hover:bg-blue-700">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="h-12 min-w-[180px] rounded-full border-blue-600 px-8 text-lg font-medium text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950/50"
-                >
-                  Learn More
-                </Button>
-              </div>
-            </div>
-          }
-        />
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-6 inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-2 dark:border-blue-800 dark:bg-blue-900/30">
+            <span className="mr-2 rounded-full bg-blue-600 px-2 py-1 text-xs font-semibold text-white">NEW</span>
+            <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+              AI-Powered Finance Management
+            </span>
+          </div>
+        
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            Manage your Money with{" "}
+            <span className="relative">
+              <span className="relative z-10 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-600">
+                AI-Driven Personal Finance
+              </span>
+              <span className="absolute bottom-2 left-0 z-0 h-3 w-full bg-blue-200 opacity-30 dark:bg-blue-700 dark:opacity-40"></span>
+            </span>
+          </h1>
+        
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+            Take control of your financial future with intelligent insights, automated budgeting, and personalized
+            recommendations.
+          </p>
+        
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button className="group h-12 min-w-[180px] rounded-full bg-blue-600 px-8 text-lg font-medium text-white hover:bg-blue-700">
+              Get Started
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              className="h-12 min-w-[180px] rounded-full border-blue-600 px-8 text-lg font-medium text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950/50"
+            >
+              Learn More
+            </Button>
+          </div>
+        </div>
 
         {/* Financial visualization - replacing tablet with abstract visualization */}
         <div className="mt-20 w-full max-w-5xl">
