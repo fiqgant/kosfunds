@@ -127,57 +127,59 @@ function Hero() {
 
           {/* Advanced financial dashboard visualization with freelance section */}
           <div className="mt-20 w-full max-w-6xl overflow-hidden">
-            <div className="relative mx-auto h-[500px] w-full max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-kosfunds-blue via-kosfunds-darkblue to-kosfunds-purple p-8 shadow-2xl">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2)_0%,rgba(0,0,0,0.4)_70%)]"></div>
+            <div className="relative mx-auto h-[500px] w-full max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#cce4ff] via-[#dcd5ff] to-[#f9ccf0] p-8 shadow-2xl">
               
+              {/* Dot Grid Background */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:20px_20px] opacity-30 z-0" />
+          
               {/* Glass panels */}
-              <div className="absolute left-10 top-10 h-36 w-52 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-4">
+              <div className="absolute left-10 top-10 h-36 w-52 rounded-xl bg-white/30 backdrop-blur-md border border-white/40 shadow-lg p-4">
                 <h4 className="font-medium text-white mb-2">Finance Track</h4>
-                <div className="h-2 w-24 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-16 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-20 rounded-full bg-white/30"></div>
+                <div className="h-2 w-24 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-16 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-20 rounded-full bg-white/50"></div>
               </div>
-              <div className="absolute right-12 top-16 h-28 w-48 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-4">
+              <div className="absolute right-12 top-16 h-28 w-48 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-4">
                 <h4 className="font-medium text-white mb-2">Freelance Jobs</h4>
-                <div className="h-2 w-28 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-20 rounded-full bg-white/30"></div>
+                <div className="h-2 w-28 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-20 rounded-full bg-white/50"></div>
               </div>
-              <div className="absolute bottom-16 left-16 h-32 w-56 rounded-xl bg-white/15 backdrop-blur-md border border-white/25 shadow-lg p-4">
+              <div className="absolute bottom-16 left-16 h-32 w-56 rounded-xl bg-white/25 backdrop-blur-md border border-white/30 shadow-lg p-4">
                 <h4 className="font-medium text-white mb-2">Income Dashboard</h4>
-                <div className="h-2 w-32 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-24 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-28 rounded-full bg-white/30"></div>
+                <div className="h-2 w-32 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-24 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-28 rounded-full bg-white/50"></div>
               </div>
-              <div className="absolute bottom-20 right-20 h-40 w-56 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-4">
+              <div className="absolute bottom-20 right-20 h-40 w-56 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-4">
                 <h4 className="font-medium text-white mb-2">Freelance Opportunities</h4>
-                <div className="h-2 w-36 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-28 rounded-full bg-white/30 mb-2"></div>
-                <div className="h-2 w-32 rounded-full bg-white/30"></div>
+                <div className="h-2 w-36 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-28 rounded-full bg-white/50 mb-2"></div>
+                <div className="h-2 w-32 rounded-full bg-white/50"></div>
               </div>
-              
-              {/* Animated financial icons with better styling */}
+          
+              {/* Animated financial icons */}
               <div className="absolute left-[15%] top-[20%] animate-float z-10">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md border border-white/50 transition-transform hover:scale-105">
-                  <DollarSign className="h-10 w-10 text-kosfunds-blue" />
+                  <DollarSign className="h-10 w-10 text-blue-500" />
                 </div>
               </div>
               <div className="absolute right-[20%] top-[30%] animate-float-slow z-10">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md border border-white/50 transition-transform hover:scale-105">
-                  <LineChart className="h-10 w-10 text-kosfunds-darkblue" />
+                  <LineChart className="h-10 w-10 text-indigo-500" />
                 </div>
               </div>
               <div className="absolute bottom-[25%] left-[40%] animate-float z-10">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md border border-white/50 transition-transform hover:scale-105">
-                  <Wallet className="h-10 w-10 text-kosfunds-purple" />
+                  <Wallet className="h-10 w-10 text-purple-500" />
                 </div>
               </div>
               <div className="absolute right-[30%] bottom-[15%] animate-float-slow z-10">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-md border border-white/50 transition-transform hover:scale-105">
-                  <Briefcase className="h-10 w-10 text-kosfunds-teal" />
+                  <Briefcase className="h-10 w-10 text-pink-500" />
                 </div>
               </div>
-              
-              {/* Animated connections with glow effect */}
+          
+              {/* SVG Connection Paths */}
               <svg className="absolute inset-0 h-full w-full z-0" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -185,58 +187,37 @@ function Hero() {
                     <stop offset="100%" stopColor="rgba(255,255,255,0.2)" />
                   </linearGradient>
                 </defs>
-                <path 
-                  d="M200,100 Q300,50 400,150 T600,100" 
-                  stroke="url(#line-gradient)" 
-                  strokeWidth="2" 
-                  fill="none"
-                  strokeDasharray="10"
-                  className="animate-dash"
-                />
-                <path 
-                  d="M150,200 Q250,250 350,150 T550,250 Q650,300 750,150" 
-                  stroke="url(#line-gradient)" 
-                  strokeWidth="2" 
-                  fill="none"
-                  strokeDasharray="10"
-                  className="animate-dash-reverse"
-                />
-                <path 
-                  d="M100,300 Q200,250 300,350 T500,250 Q600,200 700,300" 
-                  stroke="url(#line-gradient)" 
-                  strokeWidth="2" 
-                  fill="none"
-                  strokeDasharray="10"
-                  className="animate-dash-slow"
-                />
+                <path d="M200,100 Q300,50 400,150 T600,100" stroke="url(#line-gradient)" strokeWidth="2" fill="none" strokeDasharray="10" className="animate-dash" />
+                <path d="M150,200 Q250,250 350,150 T550,250 Q650,300 750,150" stroke="url(#line-gradient)" strokeWidth="2" fill="none" strokeDasharray="10" className="animate-dash-reverse" />
+                <path d="M100,300 Q200,250 300,350 T500,250 Q600,200 700,300" stroke="url(#line-gradient)" strokeWidth="2" fill="none" strokeDasharray="10" className="animate-dash-slow" />
               </svg>
-              
-              {/* Central element - enhanced */}
+          
+              {/* Central Element */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform z-10">
                 <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-white shadow-[0_0_40px_rgba(37,99,235,0.3)]">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-kosfunds-blue via-kosfunds-teal to-kosfunds-purple opacity-20 blur-xl animate-rotate-slow"></div>
-                  <div className="absolute inset-1 rounded-full bg-gradient-to-r from-kosfunds-blue to-kosfunds-purple opacity-20"></div>
-                  <div className="absolute inset-2 rounded-full bg-white"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 via-teal-300 to-purple-400 opacity-20 blur-xl animate-rotate-slow" />
+                  <div className="absolute inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-20" />
+                  <div className="absolute inset-2 rounded-full bg-white" />
                   <div className="z-10 text-center">
-                    <div className="mb-1 text-3xl font-bold text-gradient">Kosfunds</div>
-                    <div className="text-sm font-semibold text-kosfunds-teal">AI Finance & Work</div>
+                    <div className="mb-1 text-3xl font-bold text-blue-600">Kosfunds</div>
+                    <div className="text-sm font-semibold text-gray-700">AI Finance & Work</div>
                   </div>
                 </div>
               </div>
-              
-              {/* Enhanced particles with glow */}
-              <div className="absolute inset-0 overflow-hidden">
+          
+              {/* Floating particles */}
+              <div className="absolute inset-0 overflow-hidden z-0">
                 {Array.from({ length: 30 }).map((_, i) => (
-                  <div 
+                  <div
                     key={i}
                     className="absolute h-2 w-2 rounded-full bg-white opacity-70 shadow-[0_0_5px_rgba(255,255,255,0.8)]"
                     style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
                       animation: `float-particle ${5 + Math.random() * 10}s linear infinite`,
-                      animationDelay: `${Math.random() * 5}s`
+                      animationDelay: `${Math.random() * 5}s`,
                     }}
-                  ></div>
+                  />
                 ))}
               </div>
             </div>
