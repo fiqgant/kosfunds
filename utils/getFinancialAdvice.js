@@ -29,21 +29,22 @@ Tips pengelolaan pajak untuk pekerja lepas atau afiliasi.
 [AFFILIATE]
 Cara praktis memulai atau meningkatkan penghasilan dari afiliasi.
 Sertakan 1–2 contoh produk digital atau fisik yang cocok dipromosikan oleh pemula (berikan kategori, contoh, dan platform affiliate-nya).
+Tambahkan bahwa pengguna juga dapat menjelajahi fitur affiliate internal di Kosfunds melalui menu "Affiliate"
 
 [FREELANCE]
 Langkah awal untuk mendapatkan penghasilan freelance online.
 Rekomendasikan 1–2 jenis pekerjaan freelance yang cocok untuk pemula (berdasarkan tren umum) dan sebutkan platform untuk memulainya.
+Tambahkan bahwa pengguna juga dapat menjelajahi fitur freelance internal di Kosfunds melalui menu "Freelance".
 
 Jawaban dalam bahasa Indonesia. Tiap bagian maksimal 3–5 kalimat. Gunakan gaya sopan, ringkas, dan actionable.
 `;
-
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: userPrompt }] }],
       generationConfig: {
         temperature: 0.5,
-        maxOutputTokens: 500, // dinaikkan agar cukup untuk 4 bagian
+        maxOutputTokens: 500,
       },
     });
 
