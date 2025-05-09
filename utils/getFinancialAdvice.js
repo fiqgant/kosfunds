@@ -18,24 +18,29 @@ Saya ingin mendapatkan saran keuangan berdasarkan data berikut:
 - Total Pendapatan: ${totalIncome} IDR
 - Total Pengeluaran: ${totalSpend} IDR
 
-Tolong analisis kondisi keuangan saya dan berikan rekomendasi dalam bahasa Indonesia, dengan gaya bahasa yang sopan, ringkas, dan mudah dipahami.
+Berikan output dengan format seperti ini:
 
-Berikan:
-1. **Analisis singkat kondisi keuangan saya saat ini** (apakah surplus, defisit, atau seimbang).
-2. **Langkah realistis yang bisa saya lakukan dalam 1 minggu ke depan** untuk meningkatkan efisiensi anggaran dan menabung lebih banyak.
-3. **Tips pajak** yang relevan jika saya adalah pekerja lepas atau memiliki penghasilan dari afiliasi.
-4. **Saran praktis untuk memulai atau mengembangkan penghasilan dari program afiliasi** (produk digital atau fisik).
-5. **Langkah awal untuk memulai karier freelance secara online**, termasuk platform yang bisa digunakan untuk pemula.
+[ANGGARAN]
+Analisis kondisi keuangan dan saran pengelolaan anggaran pribadi.
 
-Tulis dalam 4–6 paragraf pendek. Sertakan poin-poin yang actionable, hemat waktu, dan sesuai dengan kondisi keuangan masyarakat Indonesia pada umumnya.
-    `;
+[PAJAK]
+Tips pengelolaan pajak untuk pekerja lepas atau afiliasi.
+
+[AFFILIATE]
+Cara praktis memulai atau meningkatkan penghasilan dari afiliasi.
+
+[FREELANCE]
+Langkah awal untuk mendapatkan penghasilan freelance online.
+
+Jawaban dalam bahasa Indonesia. Tiap bagian maksimal 3–5 kalimat. Tulis dengan gaya sopan, to the point, dan actionable.
+`;
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: userPrompt }] }],
       generationConfig: {
-        maxOutputTokens: 300,
         temperature: 0.5,
+        maxOutputTokens: 500, // dinaikkan agar cukup untuk 4 bagian
       },
     });
 

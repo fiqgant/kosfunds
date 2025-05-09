@@ -1,3 +1,5 @@
+"use client";
+
 import formatNumber from "@/utils";
 import getFinancialAdvice from "@/utils/getFinancialAdvice";
 import {
@@ -8,24 +10,24 @@ import {
   CircleDollarSign,
 } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
-import { useUser } from "@clerk/nextjs"; // Jika menggunakan Clerk
+import { useUser } from "@clerk/nextjs";
 
 function CardInfo({ budgetList = [], incomeList = [] }) {
-  const { user } = useUser(); // Mendapatkan data pengguna yang sedang login
+  const { user } = useUser();
   const [financialAdvice, setFinancialAdvice] = useState("");
 
-  // Optimasi dengan useMemo
   const [totalBudget, totalSpend, totalIncome] = useMemo(() => {
     let totalBudget_ = 0,
       totalSpend_ = 0,
       totalIncome_ = 0;
 
-    // Memfilter berdasarkan user yang sedang login
     const filteredBudgetList = budgetList.filter(
-      (element) => element.createdBy === user?.primaryEmailAddress?.emailAddress
+      (element) =>
+        element.createdBy === user?.primaryEmailAddress?.emailAddress
     );
     const filteredIncomeList = incomeList.filter(
-      (element) => element.createdBy === user?.primaryEmailAddress?.emailAddress
+      (element) =>
+        element.createdBy === user?.primaryEmailAddress?.emailAddress
     );
 
     filteredBudgetList.forEach((element) => {
@@ -55,26 +57,62 @@ function CardInfo({ budgetList = [], incomeList = [] }) {
     }
   }, [totalBudget, totalIncome, totalSpend]);
 
+  // Helper parsing kategori dari AI
+  const parseAdviceByCategory = (text) => {
+    const sectionMap = {
+      ANGGARAN: "",
+      PAJAK: "",
+      AFFILIATE: "",
+      FREELANCE: "",
+    };
+
+    const matches = text.split(/\[(ANGGARAN|PAJAK|AFFILIATE|FREELANCE)\]/gi);
+    for (let i = 1; i < matches.length; i += 2) {
+      const key = matches[i].toUpperCase();
+      const content = matches[i + 1]?.trim();
+      if (sectionMap[key] !== undefined) {
+        sectionMap[key] = content;
+      }
+    }
+
+    return sectionMap;
+  };
+
   return (
     <div>
       {budgetList.length > 0 ? (
         <div>
           <div className="p-7 border mt-4 -mb-1 rounded-2xl flex items-center justify-between">
-            <div className="">
+            <div>
               <div className="flex mb-2 flex-row space-x-1 items-center">
                 <h2 className="text-md">Finance Advisor</h2>
                 <Sparkles
                   className="rounded-full text-white w-10 h-10 p-2
-  bg-gradient-to-r
-  from-pink-500
-  via-red-500
-  to-yellow-500
-  background-animate"
+                  bg-gradient-to-r
+                  from-pink-500
+                  via-red-500
+                  to-yellow-500
+                  background-animate"
                 />
               </div>
-              <h2 className="font-light text-md">
-                {financialAdvice || "Loading financial advice..."}
-              </h2>
+
+              {!financialAdvice ? (
+                <h2 className="font-light text-md">Loading financial advice...</h2>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                  {Object.entries(parseAdviceByCategory(financialAdvice)).map(
+                    ([key, value]) => (
+                      <div
+                        key={key}
+                        className="bg-white rounded-xl shadow p-4 space-y-2 border"
+                      >
+                        <h3 className="text-md font-semibold">{key}</h3>
+                        <p className="text-sm leading-relaxed">{value}</p>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
