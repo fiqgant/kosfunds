@@ -1,12 +1,34 @@
-// file: lib/getFinancialAdvice.js
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import DOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
+
+// Inisialisasi DOMPurify untuk environment server-side (Next.js API/server)
+const window = new JSDOM('').window;
+const purify = DOMPurify(window);
+
+// Fungsi format teks AI jadi HTML terstruktur
+const formatAdvice = (rawText) => {
+  if (!rawText) return "";
+
+  const lines = rawText.trim().split(/\r?\n/).filter(line => line.trim() !== "");
+
+  let formatted = "";
+  for (let line of lines) {
+    if (/^\d+\./.test(line)) {
+      formatted += `<p><strong>${line.trim()}</strong></p>`;
+    } else if (/^Situasi keuangan|^Saran singkat|^Tips pajak|^Penghasilan tambahan|^Proyek freelance/i.test(line)) {
+      formatted += `<p><strong>${line.trim()}</strong></p>`;
+    } else {
+      formatted += `<p>${line.trim()}</p>`;
+    }
+  }
+
+  return purify.sanitize(formatted);
+};
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
 const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
-  console.log(totalBudget, totalIncome, totalSpend);
-
-  // Validasi input awal
   if (
     !totalBudget || !totalIncome || !totalSpend ||
     isNaN(totalBudget) || isNaN(totalIncome) || isNaN(totalSpend) ||
@@ -49,9 +71,10 @@ Gunakan gaya bahasa yang mudah dipahami oleh orang awam, ringkas namun bermanfaa
       },
     });
 
-    const advice = result.response.text().trim();
-    console.log(advice);
-    return advice;
+    const rawAdvice = result.response.text().trim();
+    const formattedAdvice = formatAdvice(rawAdvice);
+    return formattedAdvice;
+
   } catch (error) {
     console.error("Error fetching financial advice:", error);
     return "Maaf, saya tidak bisa memberikan nasehat keuangan saat ini. Silakan coba lagi nanti.";
