@@ -1,12 +1,11 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
-import { ShoppingBag, LinkIcon, Coins } from "lucide-react";
+import { ShoppingBag, LinkIcon, Coins, Lightbulb } from "lucide-react";
 
 export default function AffiliatePage() {
   const { user } = useUser();
 
-  // Dummy produk affiliate dengan estimasi komisi
   const products = [
     {
       name: "Kelas Menulis Artikel SEO",
@@ -41,13 +40,33 @@ export default function AffiliatePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Header */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-blue-800">Program Affiliate Kosfunds</h1>
           <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-            Promosikan produk digital dan fisik yang relevan dengan topik keuangan.
-            Dapatkan penghasilan dari setiap pembelian melalui link kamu.
+            Promosikan produk pilihan dari Kosfunds dan partner kami. Setiap kali ada yang membeli dari link kamu, kamu akan mendapat komisi langsung.
           </p>
         </div>
+
+        {/* Panduan Affiliate */}
+        <div className="bg-white border p-6 rounded-xl shadow-sm mb-10">
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-3">
+            <Lightbulb className="text-yellow-500" size={20} />
+            Panduan Singkat untuk Memulai
+          </h2>
+          <ol className="list-decimal list-inside text-sm text-gray-700 space-y-1">
+            <li>Buka daftar produk affiliate di bawah.</li>
+            <li>Copy link affiliate milik kamu (sudah otomatis dibuat).</li>
+            <li>Bagikan link tersebut di media sosial, status WhatsApp, blog, atau komunitas.</li>
+            <li>Setiap transaksi dari link kamu akan memberi kamu komisi sesuai estimasi.</li>
+          </ol>
+          <p className="text-sm text-gray-600 mt-4 italic">
+            Komisi akan ditambahkan ke dompet Kosfunds kamu dan bisa ditarik kapan saja.
+          </p>
+        </div>
+
+        {/* List Produk Affiliate */}
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Produk Affiliate Tersedia</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {products.map((product, index) => {
