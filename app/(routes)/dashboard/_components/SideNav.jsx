@@ -27,7 +27,8 @@ function Navigation() {
     { id: 7, name: "Beasiswa", icon: GraduationCap, path: "/dashboard/scholarships" },
     { id: 8, name: "Edukasi", icon: BookOpenCheck, path: "/dashboard/education" },
     { id: 9, name: "Affiliate", icon: LinkIcon, path: "/dashboard/affiliate" },
-    { id: 10, name: "Dompet", icon: Wallet, path: "/dashboard/wallet" }, // ✅ Menu baru
+    { id: 10, name: "Dompet", icon: Wallet, path: "/dashboard/wallet" },
+    { id: 11, name: "Split Bill", icon: ReceiptText, path: "/dashboard/split-bill" }, // ✅ Baru ditambahkan
   ];
 
   const path = usePathname();
