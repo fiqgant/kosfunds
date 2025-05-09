@@ -6,6 +6,7 @@ import {
   ReceiptText,
   ShieldCheck,
   CircleDollarSign,
+  Briefcase,
 } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
@@ -18,6 +19,7 @@ function Navigation() {
     { id: 3, name: "Anggaran", icon: PiggyBank, path: "/dashboard/budgets" },
     { id: 4, name: "Pengeluaran", icon: ReceiptText, path: "/dashboard/expenses" },
     { id: 5, name: "Perbarui", icon: ShieldCheck, path: "/dashboard/upgrade" },
+    { id: 6, name: "Freelance", icon: Briefcase, path: "/dashboard/freelance" }, // ✅ Tambahan baru
   ];
 
   const path = usePathname();
@@ -28,7 +30,7 @@ function Navigation() {
 
   return (
     <div>
-      {/* Sidebar untuk Desktop */}
+      {/* Sidebar Desktop */}
       <div className="hidden lg:flex lg:flex-col lg:w-64 lg:h-screen p-5 border shadow-sm fixed">
         <div className="flex flex-row items-center mb-5">
           <Image src={"/chart-donut.svg"} alt="logo" width={40} height={25} />
@@ -52,7 +54,7 @@ function Navigation() {
         </div>
       </div>
 
-      {/* Navbar Bawah untuk Mobile */}
+      {/* Navbar Bawah Mobile */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t shadow-md flex justify-around p-2 z-50 space-x-0">
         {menuList.map((menu) => (
           <Link href={menu.path} key={menu.id}>
