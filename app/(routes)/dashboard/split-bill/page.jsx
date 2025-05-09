@@ -33,8 +33,11 @@ export default function SplitBillPage() {
 
       const text = result.data.text;
       setOcrText(text);
-      setEstimatedTotal(extractTotal(text));
-      setItemList(extractItems(text));
+      const items = extractItems(text);
+      setItemList(items);
+      const totalFromText = extractTotal(text);
+      const fallbackTotal = items.reduce((sum, i) => sum + i.price, 0);
+      setEstimatedTotal(totalFromText || fallbackTotal);
     } catch (error) {
       console.error("OCR error:", error);
       setOcrText("Gagal memproses gambar.");
@@ -54,16 +57,23 @@ export default function SplitBillPage() {
   };
 
   const extractItems = (text) => {
-    const lines = text.split("\n").filter((l) => l.trim().length > 0);
+    const lines = text
+      .split("\n")
+      .map((l) => l.trim())
+      .filter((l) => l.length > 0);
     const items = [];
 
     lines.forEach((line) => {
-      const match = line.match(/^(.+?)\s+([\d.,]+)$/);
+      // cocokkan pola item seperti: "1 F&B Delivery 130.000" atau "7 X 98.000 686.002"
+      const match = line.match(/^(.*?)(\d{1,2}\s*[xX]\s*[\d.,]+)?\s+([\d.,]{3,})$/);
+
       if (match) {
         const name = match[1].trim();
-        const rawPrice = match[2].replace(/[.,]/g, "");
+        const rawPrice = match[3].replace(/[.,]/g, "");
         const price = parseInt(rawPrice, 10);
-        if (!isNaN(price)) {
+
+        const ignore = /(subtotal|total|tax|print|room|emp|cover|table)/i;
+        if (!isNaN(price) && name.length > 2 && !ignore.test(name)) {
           items.push({ name, price });
         }
       }
@@ -84,7 +94,7 @@ export default function SplitBillPage() {
     <div className="min-h-screen bg-gray-50 px-6 py-10 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold text-blue-800 mb-4">Split Bill Otomatis</h1>
       <p className="text-gray-600 mb-6">
-        Upload foto struk, sistem akan membaca item dan total, lalu membaginya untuk temanmu.
+        Upload foto struk, sistem akan membaca item dan total, lalu membaginya secara otomatis.
       </p>
 
       <input
