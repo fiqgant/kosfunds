@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { Users, Globe, Search } from "lucide-react";
+import Link from "next/link";
 
 const Index = () => {
   const internalFreelancers = [
@@ -111,17 +114,28 @@ const Index = () => {
 const FreelancerCard = ({ type, id, name, skill, price, title, platform, url }) => {
   if (type === "freelancer") {
     return (
-      <div className="bg-white p-5 rounded-xl border shadow-sm">
+      <div className="bg-white p-5 rounded-xl border shadow-sm hover:shadow-md transition">
         <h3 className="font-semibold text-lg">{name}</h3>
         <p className="text-sm text-gray-500">{skill}</p>
-        <p className="text-sm text-freelance-primary font-medium mt-2">{price}</p>
+        <p className="text-sm text-freelance-primary font-medium mt-2 mb-3">{price}</p>
+        <Link
+          href={`/dashboard/freelance/${id}`}
+          className="inline-block text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition"
+        >
+          Lihat Detail
+        </Link>
       </div>
     );
   }
 
   if (type === "job") {
     return (
-      <a href={url} target="_blank" rel="noopener noreferrer" className="block bg-white p-5 rounded-xl border shadow-sm hover:bg-gray-50 transition">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-white p-5 rounded-xl border shadow-sm hover:bg-gray-50 transition"
+      >
         <h3 className="font-semibold text-lg">{title}</h3>
         <p className="text-sm text-gray-500">via {platform}</p>
       </a>
