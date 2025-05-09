@@ -10,6 +10,7 @@ import {
   GraduationCap,
   BookOpenCheck,
   LinkIcon,
+  Wallet,
 } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
@@ -25,7 +26,8 @@ function Navigation() {
     { id: 6, name: "Freelance", icon: Briefcase, path: "/dashboard/freelance" },
     { id: 7, name: "Beasiswa", icon: GraduationCap, path: "/dashboard/scholarships" },
     { id: 8, name: "Edukasi", icon: BookOpenCheck, path: "/dashboard/education" },
-    { id: 9, name: "Affiliate", icon: LinkIcon, path: "/dashboard/affiliate" }, // ✅ Menu baru
+    { id: 9, name: "Affiliate", icon: LinkIcon, path: "/dashboard/affiliate" },
+    { id: 10, name: "Dompet", icon: Wallet, path: "/dashboard/wallet" }, // ✅ Menu baru
   ];
 
   const path = usePathname();
