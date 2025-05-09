@@ -33,8 +33,13 @@ function Navigation() {
 
   const path = usePathname();
 
+  // Temukan menu aktif paling spesifik (path terpanjang)
+  const activeMenu = menuList
+    .filter((menu) => path.startsWith(menu.path))
+    .sort((a, b) => b.path.length - a.path.length)[0]?.path;
+
   useEffect(() => {
-    console.log(path);
+    console.log("Current path:", path);
   }, [path]);
 
   return (
@@ -53,7 +58,7 @@ function Navigation() {
             <Link href={menu.path} key={menu.id}>
               <div
                 className={`flex items-center gap-2 p-4 mb-2 rounded-full text-gray-500 hover:bg-blue-100 hover:text-primary cursor-pointer ${
-                  path.startsWith(menu.path) && "text-primary bg-blue-100"
+                  menu.path === activeMenu && "text-primary bg-blue-100"
                 }`}
               >
                 <menu.icon />
@@ -77,12 +82,12 @@ function Navigation() {
             <div className="flex flex-col items-center text-gray-500 min-w-[64px]">
               <menu.icon
                 className={`w-6 h-6 ${
-                  path.startsWith(menu.path) ? "text-blue-700" : "text-gray-500"
+                  menu.path === activeMenu ? "text-blue-700" : "text-gray-500"
                 }`}
               />
               <span
                 className={`text-xs ${
-                  path.startsWith(menu.path) ? "text-blue-700" : "text-gray-500"
+                  menu.path === activeMenu ? "text-blue-700" : "text-gray-500"
                 }`}
               >
                 {menu.name}
