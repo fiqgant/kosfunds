@@ -1,8 +1,7 @@
-"use client";
+import React from "react";
+import { Users, Globe, Search } from "lucide-react";
 
-import Link from "next/link";
-
-export default function FreelancePage() {
+const Index = () => {
   const internalFreelancers = [
     {
       id: "dina",
@@ -54,53 +53,152 @@ export default function FreelancePage() {
   ];
 
   return (
-    <div className="p-6 max-w-screen-xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4 text-blue-800">Kosfunds Freelance</h1>
-      <p className="text-gray-600 mb-8 text-sm md:text-base">
-        Kosfunds bukan hanya menyarankan, tapi juga menyediakan platform freelance internal. Kamu bisa menawarkan jasa, menerima pembayaran, dan membantu komunitas.
-      </p>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-12">
+        <FreelanceHeader 
+          title="Kosfunds Freelance Hub"
+          description="Kosfunds bukan hanya menyarankan, tapi juga menyediakan platform freelance internal. Kamu bisa menawarkan jasa, menerima pembayaran, dan membantu komunitas."
+        />
 
-      {/* Internal Freelancers */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">👥 Freelancer Komunitas Kosfunds</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {internalFreelancers.map((freelancer) => (
-            <div key={freelancer.id} className="bg-white rounded-xl border p-5 shadow-sm hover:shadow-md transition">
-              <h3 className="text-lg font-semibold text-gray-800 mb-1">{freelancer.name}</h3>
-              <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full mb-2">
-                {freelancer.skill}
-              </span>
-              <p className="text-sm text-gray-600 mb-4">Harga: <strong>{freelancer.price}</strong></p>
-              <Link
-                href={`/dashboard/freelance/${freelancer.id}`}
-                className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg inline-block transition"
-              >
-                Lihat Detail
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-10">
+            <FreelanceSection title="Freelancer Komunitas Kosfunds" icon={<Users className="text-freelance-primary" size={24} />}>
+              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                {internalFreelancers.map((freelancer) => (
+                  <FreelancerCard
+                    key={freelancer.id}
+                    type="freelancer"
+                    id={freelancer.id}
+                    name={freelancer.name}
+                    skill={freelancer.skill}
+                    price={freelancer.price}
+                  />
+                ))}
+              </div>
+            </FreelanceSection>
 
-      {/* External Jobs */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">🌐 Rekomendasi dari Platform Luar</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {externalJobs.map((job, i) => (
-            <div key={i} className="bg-white rounded-xl border p-5 shadow-sm hover:shadow-md transition">
-              <h3 className="text-lg font-semibold text-gray-800 mb-1">{job.title}</h3>
-              <p className="text-sm text-gray-600 mb-3">Platform: {job.platform}</p>
-              <a
-                href={job.url}
-                target="_blank"
-                className="text-sm text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg inline-block transition"
-              >
-                Apply Sekarang
-              </a>
-            </div>
-          ))}
+            <FreelanceSection title="Rekomendasi dari Platform Luar" icon={<Globe className="text-freelance-accent" size={24} />}>
+              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                {externalJobs.map((job, i) => (
+                  <FreelancerCard
+                    key={i}
+                    type="job"
+                    title={job.title}
+                    platform={job.platform}
+                    url={job.url}
+                  />
+                ))}
+              </div>
+            </FreelanceSection>
+          </div>
+
+          <div>
+            <FreelanceSection title="Cari Berdasarkan Kategori" icon={<Search className="text-freelance-secondary" size={24} />}>
+              <div className="bg-white p-6 rounded-xl border shadow-sm">
+                <div className="space-y-4">
+                  <CategoriesPanel />
+                  <PopularSkills />
+                </div>
+              </div>
+            </FreelanceSection>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
-}
+};
+
+const FreelancerCard = ({ type, id, name, skill, price, title, platform, url }) => {
+  if (type === "freelancer") {
+    return (
+      <div className="bg-white p-5 rounded-xl border shadow-sm">
+        <h3 className="font-semibold text-lg">{name}</h3>
+        <p className="text-sm text-gray-500">{skill}</p>
+        <p className="text-sm text-freelance-primary font-medium mt-2">{price}</p>
+      </div>
+    );
+  }
+
+  if (type === "job") {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer" className="block bg-white p-5 rounded-xl border shadow-sm hover:bg-gray-50 transition">
+        <h3 className="font-semibold text-lg">{title}</h3>
+        <p className="text-sm text-gray-500">via {platform}</p>
+      </a>
+    );
+  }
+
+  return null;
+};
+
+const FreelanceHeader = ({ title, description }) => (
+  <div className="mb-12 text-center">
+    <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
+    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">{description}</p>
+  </div>
+);
+
+const FreelanceSection = ({ title, icon, children }) => (
+  <section>
+    <div className="flex items-center gap-2 mb-4">
+      {icon}
+      <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+    </div>
+    {children}
+  </section>
+);
+
+const CategoriesPanel = () => {
+  const categories = [
+    "Desain Grafis", 
+    "Penulisan & Translasi", 
+    "Video & Animasi",
+    "Data Entry", 
+    "Digital Marketing", 
+    "Pengembangan Web"
+  ];
+
+  return (
+    <div className="space-y-2">
+      <h3 className="font-medium text-sm text-gray-500 uppercase tracking-wider">Jenis Pekerjaan</h3>
+      <div className="flex flex-wrap gap-2">
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            className="px-3 py-1.5 bg-freelance-muted rounded-full text-sm hover:bg-freelance-primary hover:text-white transition-colors"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const PopularSkills = () => {
+  const skills = [
+    { name: "Adobe Photoshop", count: 24 },
+    { name: "Penulisan Artikel", count: 18 },
+    { name: "Excel", count: 15 },
+    { name: "Video Editing", count: 12 },
+    { name: "Social Media", count: 9 },
+  ];
+
+  return (
+    <div className="space-y-2 pt-4 border-t">
+      <h3 className="font-medium text-sm text-gray-500 uppercase tracking-wider">Skills Populer</h3>
+      <div className="space-y-3">
+        {skills.map((skill, index) => (
+          <div key={index} className="flex justify-between items-center">
+            <span className="text-sm">{skill.name}</span>
+            <span className="text-xs bg-freelance-primary/10 text-freelance-primary px-2 py-0.5 rounded-full">
+              {skill.count} freelancer
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Index;
