@@ -1,30 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import DOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
-
-// Inisialisasi DOMPurify untuk environment server-side (Next.js API/server)
-const window = new JSDOM('').window;
-const purify = DOMPurify(window);
-
-// Fungsi format teks AI jadi HTML terstruktur
-const formatAdvice = (rawText) => {
-  if (!rawText) return "";
-
-  const lines = rawText.trim().split(/\r?\n/).filter(line => line.trim() !== "");
-
-  let formatted = "";
-  for (let line of lines) {
-    if (/^\d+\./.test(line)) {
-      formatted += `<p><strong>${line.trim()}</strong></p>`;
-    } else if (/^Situasi keuangan|^Saran singkat|^Tips pajak|^Penghasilan tambahan|^Proyek freelance/i.test(line)) {
-      formatted += `<p><strong>${line.trim()}</strong></p>`;
-    } else {
-      formatted += `<p>${line.trim()}</p>`;
-    }
-  }
-
-  return purify.sanitize(formatted);
-};
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
@@ -38,42 +12,34 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
   }
 
   try {
-    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-      throw new Error("API key is missing");
-    }
-
     const userPrompt = `
-Saya memiliki data keuangan sebagai berikut:
+Saya ingin mendapatkan saran keuangan berdasarkan data berikut:
 - Total Anggaran: ${totalBudget} IDR
 - Total Pendapatan: ${totalIncome} IDR
 - Total Pengeluaran: ${totalSpend} IDR
 
-Tolong analisis situasi keuangan saya dan berikan:
-1. Saran singkat (1-2 kalimat) dalam bahasa Indonesia tentang bagaimana saya bisa menghemat dan menyeimbangkan anggaran pribadi.
-2. Tips praktis untuk mengelola kewajiban pajak secara efisien berdasarkan kondisi saya (asumsikan saya adalah pekerja mandiri atau freelance).
-3. Nasehat ringkas tentang bagaimana saya bisa mulai atau mengembangkan penghasilan tambahan melalui affiliate produk digital maupun fisik.
-4. Ide atau langkah awal untuk mendapatkan proyek freelance yang cocok untuk pemula.
+Tolong analisis kondisi keuangan saya dan berikan rekomendasi dalam bahasa Indonesia, dengan gaya bahasa yang sopan, ringkas, dan mudah dipahami.
 
-Gunakan gaya bahasa yang mudah dipahami oleh orang awam, ringkas namun bermanfaat, dan dorong tindakan nyata dalam waktu dekat.
+Berikan:
+1. **Analisis singkat kondisi keuangan saya saat ini** (apakah surplus, defisit, atau seimbang).
+2. **Langkah realistis yang bisa saya lakukan dalam 1 minggu ke depan** untuk meningkatkan efisiensi anggaran dan menabung lebih banyak.
+3. **Tips pajak** yang relevan jika saya adalah pekerja lepas atau memiliki penghasilan dari afiliasi.
+4. **Saran praktis untuk memulai atau mengembangkan penghasilan dari program afiliasi** (produk digital atau fisik).
+5. **Langkah awal untuk memulai karier freelance secara online**, termasuk platform yang bisa digunakan untuk pemula.
+
+Tulis dalam 4–6 paragraf pendek. Sertakan poin-poin yang actionable, hemat waktu, dan sesuai dengan kondisi keuangan masyarakat Indonesia pada umumnya.
     `;
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent({
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: userPrompt }],
-        },
-      ],
+      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
       generationConfig: {
         maxOutputTokens: 300,
         temperature: 0.5,
       },
     });
 
-    const rawAdvice = result.response.text().trim();
-    const formattedAdvice = formatAdvice(rawAdvice);
-    return formattedAdvice;
+    return result.response.text().trim();
 
   } catch (error) {
     console.error("Error fetching financial advice:", error);
