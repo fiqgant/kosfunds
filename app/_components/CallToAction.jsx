@@ -34,12 +34,14 @@ function CallToAction (){
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </Link>
-                  <Button
-                    variant="outline"
-                    className="h-14 min-w-[200px] rounded-full border-white/30 bg-white/10 px-8 text-lg font-medium text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
-                  >
-                    Demo Keuangan
-                  </Button>
+                  <Link href={"#videoPlayer"}>
+                    <Button
+                      variant="outline"
+                      className="h-14 min-w-[200px] rounded-full border-white/30 bg-white/10 px-8 text-lg font-medium text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
+                    >
+                      Demo Keuangan
+                    </Button>
+                  </Link>
                 </div>
               </div>
       

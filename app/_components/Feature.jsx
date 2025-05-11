@@ -17,7 +17,7 @@ import {
 
 function Feature (){
     return(
-        <section className="relative py-32 overflow-hidden">
+        <section className="relative py-28 overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/50 to-white dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900"></div>
