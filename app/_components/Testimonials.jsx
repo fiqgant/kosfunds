@@ -54,8 +54,13 @@ function Testimonials (){
   };
 
     return(
-      <section className="py-24 overflow-hidden">
+      <section className="overflow-hidden">
         <div className="container mx-auto px-4">
+          <div className="mb-8 flex justify-center gap-12">
+              <img src="/maskot2.png" alt="Mascot 1" className="w-32 h-32" />
+              <img src="/maskot3.png" alt="Mascot 2" className="w-32 h-32" />
+              <img src="/maskot4.png" alt="Mascot 3" className="w-32 h-32" />
+          </div>
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-4xl font-bold text-balance tracking-tight md:text-5xl">
               Dengar dari <span className="text-gradient">Pelanggan kami</span>

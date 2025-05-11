@@ -7,7 +7,6 @@ import { Incomes, Expenses } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import IncomeItem from "./IncomeItem";
 
-
 function IncomeList() {
   const [incomelist, setIncomelist] = useState([]);
   const { user } = useUser();
@@ -38,16 +37,19 @@ function IncomeList() {
   return (
     <div className="mt-7">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <CreateIncomes refreshData={() => getIncomelist()} />
+        <CreateIncomes refreshData={getIncomelist} />
         {incomelist?.length > 0 ? (
           incomelist.map((budget, index) => (
             <div key={index} className="relative">
-              <IncomeItem budget={budget} />
+              <IncomeItem budget={budget} refreshData={getIncomelist} />
             </div>
           ))
         ) : (
           [1, 2, 3, 4, 5].map((item, index) => (
-            <div key={index} className="w-full bg-slate-200 rounded-lg h-[150px] animate-pulse"></div>
+            <div
+              key={index}
+              className="w-full bg-slate-200 rounded-lg h-[150px] animate-pulse"
+            ></div>
           ))
         )}
       </div>

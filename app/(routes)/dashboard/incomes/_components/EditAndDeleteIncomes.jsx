@@ -23,6 +23,7 @@ function EditIncomes({ income, refreshData }) {
   const [name, setName] = useState(income?.name);
   const [amount, setAmount] = useState(income?.amount);
   const [loading, setLoading] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     if (income) {
@@ -35,12 +36,10 @@ function EditIncomes({ income, refreshData }) {
   const onUpdateIncomes = async () => {
     try {
       setLoading(true);
-      await db
-        .update(Incomes)
-        .set({ name, amount, icon: emojiIcon })
-        .where(eq(Incomes.id, income.id));
-      refreshData();
+      await db.update(Incomes).set({ name, amount, icon: emojiIcon }).where(eq(Incomes.id, income.id));
       toast.success("Income updated successfully!");
+      setOpenDialog(false);
+      refreshData();
     } catch (error) {
       toast.error("Failed to update income.");
       console.error(error);
@@ -50,9 +49,9 @@ function EditIncomes({ income, refreshData }) {
   };
 
   return (
-    <Dialog>
+    <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger asChild>
-        <Button>Edit</Button>
+        <Button onClick={() => setOpenDialog(true)}>Edit</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -60,50 +59,28 @@ function EditIncomes({ income, refreshData }) {
           <DialogDescription>Modify the income details below:</DialogDescription>
         </DialogHeader>
         <div className="mt-5">
-          <Button
-            variant="outline"
-            className="text-lg"
-            onClick={() => setOpenEmojiPicker(!openEmojiPicker)}
-          >
+          <Button variant="outline" className="text-lg" onClick={() => setOpenEmojiPicker(!openEmojiPicker)}>
             {emojiIcon}
           </Button>
           {openEmojiPicker && (
             <div className="absolute z-20">
-              <EmojiPicker
-                onEmojiClick={(e) => {
-                  setEmojiIcon(e.emoji);
-                  setOpenEmojiPicker(false);
-                }}
-              />
+              <EmojiPicker onEmojiClick={(e) => { setEmojiIcon(e.emoji); setOpenEmojiPicker(false); }} />
             </div>
           )}
           <div className="mt-2">
             <h2 className="text-black font-medium my-1">Income Name</h2>
-            <Input
-              placeholder="e.g. Freelance"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <Input placeholder="e.g. Freelance" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="mt-2">
             <h2 className="text-black font-medium my-1">Income Amount</h2>
-            <Input
-              type="number"
-              value={amount}
-              placeholder="e.g. 10000"
-              onChange={(e) => setAmount(e.target.value)}
-            />
+            <Input type="number" value={amount} placeholder="e.g. 10000" onChange={(e) => setAmount(e.target.value)} />
           </div>
         </div>
         <DialogFooter>
-          <DialogClose asChild>
-            <Button
-              onClick={onUpdateIncomes}
-              disabled={loading || !name || !amount}
-            >
-              {loading ? "Updating..." : "Save Changes"}
-            </Button>
-          </DialogClose>
+          <Button variant="outline" onClick={() => setOpenDialog(false)}>Cancel</Button>
+          <Button onClick={onUpdateIncomes} disabled={loading || !name || !amount}>
+            {loading ? "Updating..." : "Save Changes"}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -114,8 +91,8 @@ function DeleteIncomes({ income, refreshData }) {
   const onDeleteIncomes = async () => {
     try {
       await db.delete(Incomes).where(eq(Incomes.id, income.id));
-      refreshData();
       toast.success("Income deleted successfully!");
+      refreshData();
     } catch (error) {
       toast.error("Failed to delete income.");
       console.error(error);
@@ -123,9 +100,7 @@ function DeleteIncomes({ income, refreshData }) {
   };
 
   return (
-    <Button variant="destructive" onClick={onDeleteIncomes}>
-      Delete
-    </Button>
+    <Button variant="destructive" onClick={onDeleteIncomes}>Delete</Button>
   );
 }
 

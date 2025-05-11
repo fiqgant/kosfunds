@@ -4,3 +4,5 @@ node_modules
 .env.local
 .gitignore
 .DS_Store
+# clerk configuration (can include secrets)
+/.clerk/
