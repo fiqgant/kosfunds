@@ -2,7 +2,10 @@ import OpenAI from "openai";
 
 export async function POST(req) {
   try {
-    const { totalBudget, totalIncome, totalSpend } = await req.json();
+    const body = await req.json();
+    console.log("Request body:", body);
+
+    const { totalBudget, totalIncome, totalSpend } = body;
 
     const userPrompt = `
 Saya ingin mendapatkan saran keuangan berdasarkan data berikut:
@@ -31,7 +34,14 @@ Tambahkan bahwa pengguna juga dapat menjelajahi fitur freelance internal di Kosf
 Jawaban dalam bahasa Indonesia. Tiap bagian maksimal 3–5 kalimat. Gunakan gaya sopan, ringkas, dan actionable.
 `;
 
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("❌ OPENAI_API_KEY tidak ditemukan di environment Vercel");
+      return new Response(JSON.stringify({ error: "Server config error: API key missing" }), { status: 500 });
+    }
+
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
 
     const response = await client.chat.completions.create({
       model: "gpt-4o-mini",
@@ -43,14 +53,17 @@ Jawaban dalam bahasa Indonesia. Tiap bagian maksimal 3–5 kalimat. Gunakan gaya
       temperature: 0.5,
     });
 
-    return new Response(JSON.stringify({ 
-      advice: response.choices[0].message.content.trim() 
+    console.log("OpenAI response:", response);
+
+    return new Response(JSON.stringify({
+      advice: response.choices[0]?.message?.content?.trim() || "Tidak ada saran."
     }), { status: 200 });
 
   } catch (error) {
-    console.error("API error:", error);
-    return new Response(JSON.stringify({ 
-      error: "Gagal mengambil saran keuangan." 
+    console.error("❌ API error detail:", error);
+
+    return new Response(JSON.stringify({
+      error: error.message || "Gagal mengambil saran keuangan."
     }), { status: 500 });
   }
 }
