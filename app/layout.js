@@ -20,7 +20,19 @@ export default function RootLayout({ children }) {
             src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"
             defer
           ></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-J377X8F670"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-J377X8F670');
+              `,
+            }}
+          />
         </head>
+
         <body className={outfit.className}>
           <Toaster />
           {children}
