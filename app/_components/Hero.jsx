@@ -16,6 +16,7 @@ import Feature from "./Feature";
 import Testimonials from "./Testimonials";
 import CallToAction from "./CallToAction";
 import VideoPlayer from "./VideoPlayer";
+import Footer from "./Footer";
 
 
 function Hero() {
@@ -185,6 +186,8 @@ function Hero() {
 
       {/* CALL TO ACTION SECTION */}
       < CallToAction />
+
+      <Footer/>
 
       {/* Add missing imports and CSS */}
       <style jsx global>{`

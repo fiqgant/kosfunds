@@ -27,7 +27,7 @@ function Header() {
             Blog
           </Button>
         </Link>
-        <Link href="/about-us">
+        <Link href="/aboutUs">
           <Button variant="outline" className="rounded-full pointer-events-auto">
             About Us
           </Button>

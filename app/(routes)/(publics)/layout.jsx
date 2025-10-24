@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Header from "../../_components/header.jsx";
+import Header from "../../_components/Header.jsx";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function PublicLayout({ children }) {
