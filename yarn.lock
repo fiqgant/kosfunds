@@ -2117,10 +2117,10 @@ formdata-node@^6.0.3:
   resolved "https://registry.npmjs.org/formdata-node/-/formdata-node-6.0.3.tgz"
   integrity sha512-8e1++BCiTzUno9v5IZ2J6bv4RU+3UKDmqWUQD0MIMVCd9AdhWkO1gw57oo1mNEX1dMq2EGI+FbWz4B92pscSQg==
 
-framer-motion@^11.3.2:
-  version "11.11.9"
-  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.11.9.tgz"
-  integrity sha512-XpdZseuCrZehdHGuW22zZt3SF5g6AHJHJi7JwQIigOznW4Jg1n0oGPMJQheMaKLC+0rp5gxUKMRYI6ytd3q4RQ==
+framer-motion@^11.2.10:
+  version "11.2.10"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.2.10.tgz"
+  integrity sha512-/gr3PLZUVFCc86a9MqCUboVrALscrdluzTb3yew+2/qKBU8CX6nzs918/SRBRCqaPbx0TZP10CB6yFgK2C5cYQ==
   dependencies:
     tslib "^2.4.0"
 
