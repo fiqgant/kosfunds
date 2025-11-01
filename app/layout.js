@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
+import ConsoleArt from "./_components/ConsoleArt";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         </head>
 
         <body className={outfit.className}>
+          <ConsoleArt />
           <Toaster />
           {children}
           <Analytics />
