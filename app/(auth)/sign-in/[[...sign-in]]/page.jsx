@@ -48,7 +48,7 @@ export default function Page() {
             </div>
 
             {/* Komponen Masuk dari Clerk */}
-            <SignIn />
+            <SignIn fallbackRedirectUrl="/dashboard" />
           </div>
         </main>
       </div>
