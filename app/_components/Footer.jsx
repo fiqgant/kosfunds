@@ -125,7 +125,7 @@ export default function Footer() {
             <Button
               variant="outline"
               size="sm"
-              className="mt-4 border-white/30 text-black hover:bg-white/10 hover:text-white"
+              className="mt-4 border-white/30 text-black hover:bg-[#9634EB] hover:text-white"
               onClick={() =>
                 window.open(
                   "https://maps.app.goo.gl/7eNccYxozzrVrfhA7",
@@ -156,7 +156,7 @@ export default function Footer() {
                 <Button
                   type="submit"
                   size="icon"
-                  className="bg-white text-[#0B1E4B] hover:bg-gray-100"
+                  className="bg-white text-[#0B1E4B] hover:bg-[#9634EB] hover:text-white"
                 >
                   <Send className="h-4 w-4" />
                 </Button>
