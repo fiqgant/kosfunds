@@ -56,7 +56,7 @@ const MapSection = () => {
 
               <Button
                 variant="default"
-                className="bg-primary hover:bg-secondary text-primary-foreground w-full md:w-auto"
+                className="bg-primary hover:bg-[#9634EB] text-primary-foreground w-full md:w-auto"
                 onClick={() => window.open('https://maps.app.goo.gl/7eNccYxozzrVrfhA7', '_blank')}
               >
                 Buka di Google Maps
