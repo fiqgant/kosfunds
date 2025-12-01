@@ -4,6 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import ConsoleArt from "./_components/ConsoleArt";
+import ChatWidget from "./_components/ChatWidget";
+
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -39,6 +41,7 @@ export default function RootLayout({ children }) {
           <Toaster />
           {children}
           <Analytics />
+          <ChatWidget />
         </body>
       </html>
     </ClerkProvider>
